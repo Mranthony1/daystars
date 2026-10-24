@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #141512;
+  --color-ink-2: #1c1e18;
+  --color-paper: #f7f7f0;
+  --color-lime: #d7ff64;
+  --color-stone: #d8d8d0;
+  --color-mist: #b7b8ae;
+  --color-mute: #3e4139;
+  --color-line: rgb(216 216 208 / 16%);
+  --color-line-strong: rgb(20 21 18 / 14%);
+  --font-sans: var(--font-manrope), sans-serif;
+  --font-display: var(--font-grotesk), sans-serif;
+  --animate-rise: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html {
+  background: var(--color-ink);
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #d7ff64;
+  color: #141512;
+}
+
+:focus-visible {
+  outline: 2px solid #d7ff64;
+  outline-offset: 3px;
+}
+
+.surface-lime :focus-visible,
+.btn-lime:focus-visible {
+  outline-color: #141512;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 80;
+  transform: translateY(-140%);
+  background: #d7ff64;
+  color: #141512;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary {
+  list-style: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe\:animate-rise {
+    animation: none !important;
+  }
+}
